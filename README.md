@@ -14,7 +14,7 @@ cd ProductReview
 npm install .
 
 ```
-#Run
+# Run
 Run the following command in command propmt and open the URL http://localhost:2222/ to browse the sample.
 ```
 node server.js
