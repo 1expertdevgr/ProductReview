@@ -1,0 +1,234 @@
+﻿
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+
+</head>
+<!--start body block-->
+<body ng-app="productReviewApp">
+    <!--start header div block-->
+    <div class="header-main">
+
+        <!--start header div block-->
+        <div class="header-center">
+            <div class="container">
+                <a href="#" class="logo-main">
+                    Demo<span>Product Review</span>
+                    <label class="menu-btn"></label>
+
+                </a>
+            </div>
+
+        </div>
+        <!--End header div block-->
+        <!--start navigation div block-->
+        <div class="header-menu" id="menu-slide-in">
+            <div class="container">
+                <ul>
+
+                    <li><a href="#">Cell Phones & Accessories</a></li>
+                    <li><a href="#">Carrier Phones</a></li>
+                    <li><a href="#">Unlocked Phones</a></li>
+                    <li><a href="#">Prime Exclusive Phones</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Cases</a></li>
+                    <li><a href="#">Wearable Technology</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+                    <li><a href="#">Deals</a></li>
+                </ul>
+            </div>
+        </div>
+        <!--End navigation div block-->
+
+    </div>
+    <!--End header div block-->
+    <!--start product container div block-->
+    <div class="content-container">
+        <div class="container">
+
+            <!--start product controller div block-->
+            <div ng-controller="productViewController" ng-init="init()" class="product-details">
+                <div class="product-basic-details">
+                    <div class="product-image">
+                        <div class="custom-space">
+                            <img src="{{product.imageUrl}}" />
+                        </div>
+                    </div>
+                    <div class="product-discription">
+                        <div class="custom-space">
+                            <h3>
+                                <span>{{product.category}}</span>{{product.title}}</h1>
+                                <div class="rating-common">
+                                    <ul>
+                                        <li>
+                                            <div class="rating-stars">
+                                                <ul>
+                                                    <li><img src="static/images/star.png" /></li>
+                                                    <li><img src="static/images/star.png" /></li>
+                                                    <li><img src="static/images/star.png" /></li>
+                                                    <li><img src="static/images/star.png" /></li>
+                                                </ul>
+
+                                                <div class="rating-view">
+                                                    <h5>4.8 out of 5 stars</h5>
+                                                    <table>
+                                                        <tr>
+                                                            <td>5 stars</td>
+                                                            <td><span class="rating-flow"></span></td>
+                                                            <td>89%</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>4 stars</td>
+                                                            <td><span class="rating-flow"></span></td>
+                                                            <td>89%</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>3 stars</td>
+                                                            <td><span class="rating-flow"></span></td>
+                                                            <td>89%</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2 stars</td>
+                                                            <td><span class="rating-flow"></span></td>
+                                                            <td>89%</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1 star</td>
+                                                            <td><span class="rating-flow"></span></td>
+                                                            <td>89%</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="3"><a href="#">See All Reviews</a></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                        <li><a href="#customer-review">{{product.reviewcount}} customer reviews  </a></li>
+                                        <li><a href="#">{{product.faqcount}} answered questions  </a></li>
+                                    </ul>
+
+                                </div>
+                                <div class="best-seller">
+                                    <span>#1 Best Seller</span>in Line Conditioners
+                                </div>
+                                <div class="price">
+                                    Price:	<span>${{product.price}} </span>
+                                </div>
+                                <div class="description-text">
+                                    <h2>{{product.status}}</h2>
+                                    <p ng-repeat="description in product.descriptions">{{description}}</p>
+
+                                    <ul>
+                                        <li ng-repeat="feature in product.features">{{feature}}</li>
+
+                                    </ul>
+                                </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end product controller div block-->
+            <!--start review controller div block-->
+            <div ng-controller="productReviewController" ng-init="init()" class="review-container">
+
+
+                <div class="review-main">
+                    <h6>Ratings and Reviews</h6>
+                    <table class="review-tbl">
+
+                        <!--start review avearge rating rows block-->
+                        <tr>
+                            <td rowspan="7">
+                                <div class="rating-points">{{average}} Stars</div>
+                                <p>
+                                    <span>{{totalRatingCount}}</span> Ratings &
+                                    <span>{{reviews.length}}</span> Reviews
+                                </p>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr ng-repeat="aveargerating in averageRatingList">
+
+                            <td>{{aveargerating.rating}} stars</td>
+                            <td><span class="rating-flow"><label style="width:{{aveargerating.percentage}}%"></label></span></td>
+                            <td>{{aveargerating.percentage}}%</td>
+                            <td>{{aveargerating.total}}</td>
+
+                        </tr>
+
+                        <!--end review avearge rating rows block-->
+                        <!--start submit review section block-->
+                        <tr>
+                            <td colspan="4">
+                                <form name="submitReviewForm">
+                                    <label class="btn-rate" for="rate-now">Rate this product</label>
+
+                                    <input type="checkbox" id="rate-now" />
+
+                                    <div class="rate-container" id="rate-view">
+                                        <h3><span>Rate this product</span></h3>
+                                        <div star-rating ng-model="review.rating" max="5" on-rating-select="rateFunction(rating)"></div>
+                                        <div><input ng-model="review.title" type="text" placeholder="Title" ng-required="true" /></div>
+                                        <div class="description-field"><input ng-model="review.description" placeholder="Description" ng-required="true" /></div>
+                                        <div><input ng-model="review.reviewedby" type="text" placeholder="Name" ng-required="true" /></div>
+                                        <button type="submit" ng-click="submitReviewForm.$valid && postReview()" class="btn-rate">Submit</button>
+
+                                    </div>
+                                </form>
+
+                            </td>
+                        </tr>
+                        <!--end submit review section block-->
+
+                    </table>
+
+                </div>
+                <!--end review avearge rating div block-->
+
+
+                <h4 id="customer-review">Customer reviews</h4>
+
+                <!--start list review div block-->
+                <div ng-repeat="review in reviews  | orderBy:'-likes' " class="review_wrapper">
+
+                    <h2 class="name">{{review.reviewedby}} <span>reviewed on : {{review.reviewdate}}</span><span><star-rating ng-model="review.rating" readonly="true"></star-rating></span></h2>
+                    <p class="review-title">{{review.title}}</p>
+                    <p class="description_review">{{review.description}}</p>
+
+                    <div class="like-row">
+                        <span ng-click="onLikeClick($event,review)" ng-class="(review.ilikethis) ? 'lnk-like like liked' : 'lnk-like like'">
+                            <label>{{review.likes}}  {{review.ilikethis==true? 'You liked this !':''}}</label>
+                        </span>
+                    </div>
+                </div>
+                <!--end list review div block-->
+
+            </div>
+            <!--end review controller div block-->
+
+        </div>
+    </div>
+    <!--End review container div block-->
+
+
+    <script src="static/js/angular.min.js"></script>
+    <script src="static/js/rating.utility.js"></script>
+    <script src="static/js/review.js"></script>
+    <script src="static/js/review.js"></script>
+
+
+</body>
+<!--Close body block-->
+</html>
