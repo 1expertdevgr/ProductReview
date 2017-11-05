@@ -21,6 +21,6 @@ node server.js
 
 ```
 
-# LICENSE
+# License
 
 Countable license. See the LICENSE file for details.
