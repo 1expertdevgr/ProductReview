@@ -1,0 +1,16 @@
+{
+  "name": "productreview",
+  "version": "1.0.0",
+  "description": "Product Review",
+  "main": "server.js",
+  "scripts": {
+    "test": "console.log(\"app started\")",
+    "start": "node server.js"
+  },
+  "author": "Gyan Ranjan",
+  "license": "Countable",
+  "dependencies": {
+    "express": "^4.15.3",
+    "nodemon": "^1.11.0"
+  }
+}
