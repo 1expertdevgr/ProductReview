@@ -9,6 +9,10 @@ var productReviewApp = angular.module("productReviewApp", []);
 //---------------------------------------------------------------------------------
 productReviewApp.controller("productViewController", function ($scope, $http) {
 
+    $scope.review = {
+            reviewid: getNextId(),reviewedby: "",rating: 0,readonly: false,title: "",reviewdate: getCurrentDate(),likes: 0,ilikethis: false
+        }
+
     //---Initialize the product detail view
     //---get the sample content from json file if localdb has not data.
     $scope.init = function () {
